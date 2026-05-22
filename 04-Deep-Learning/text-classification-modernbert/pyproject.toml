@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modernbert-banking77"
+version = "0.1.0"
+description = "ModernBERT fine-tuned on Banking77 with calibration"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ahmed Mostafa" }]
+dependencies = [
+    "transformers>=4.48.0",
+    "datasets>=3.1.0",
+    "huggingface_hub>=0.26.0",
+    "gradio>=5.5.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.1",
+    "numpy>=1.26.0",
+]
+
+[project.optional-dependencies]
+train = [
+    "torch>=2.4.0",
+    "accelerate>=1.1.0",
+    "scikit-learn>=1.5.0",
+    "evaluate>=0.4.3",
+    "tqdm>=4.66.5",
+]
+dev = [
+    "pytest>=8.3.3",
+    "ruff>=0.7.4",
+    "ipykernel>=6.29.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

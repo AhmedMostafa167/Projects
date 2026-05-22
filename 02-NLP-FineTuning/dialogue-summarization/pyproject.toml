@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dialogue-summarization"
+version = "0.1.0"
+description = "Llama-3.2-3B + LoRA fine-tune on SAMSum"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ahmed Mostafa" }]
+dependencies = [
+    "transformers>=4.46.0",
+    "datasets>=3.1.0",
+    "huggingface_hub>=0.26.0",
+    "gradio>=5.5.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.1",
+]
+
+[project.optional-dependencies]
+train = [
+    "peft>=0.13.0",
+    "trl>=0.12.0",
+    "accelerate>=1.1.0",
+    "bitsandbytes>=0.44.0",
+    "torch>=2.4.0",
+    "rouge-score>=0.1.2",
+    "bert-score>=0.3.13",
+    "evaluate>=0.4.3",
+    "tqdm>=4.66.5",
+]
+dev = [
+    "pytest>=8.3.3",
+    "ruff>=0.7.4",
+    "ipykernel>=6.29.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

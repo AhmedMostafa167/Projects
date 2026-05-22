@@ -10,8 +10,8 @@ A curated set of machine-learning and natural-language-processing projects, each
 
 | # | Project | Domain | Stack | Live demo | Source |
 |---|---|---|---|---|---|
-| 01 | **Research Assistant** | LLM, RAG, agentic workflows | LangChain 0.3, LangGraph, Chroma, FastAPI, Gradio | _(deploy in progress)_ | [`01-LLM-RAG/research-assistant/`](01-LLM-RAG/research-assistant/) |
-| 02 | **Dialogue Summarization** | NLP, transformer fine-tuning | Transformers, PEFT, TRL, HF Hub | _coming next_ | `02-NLP-FineTuning/` |
+| 01 | **Research Assistant** | LLM, RAG, agentic workflows | LangChain 0.3, LangGraph, Chroma, FastAPI, Gradio | _(deploy ready)_ | [`01-LLM-RAG/research-assistant/`](01-LLM-RAG/research-assistant/) |
+| 02 | **Dialogue Summarization** | NLP, transformer fine-tuning, PEFT | Transformers 4.46, PEFT, TRL, bitsandbytes, HF Hub, Gradio | _(train + deploy ready)_ | [`02-NLP-FineTuning/dialogue-summarization/`](02-NLP-FineTuning/dialogue-summarization/) |
 | 03 | **LA Crime Interactive Dashboard** | EDA, visualization | Streamlit, Plotly, pandas | _coming next_ | [`03-EDA-Dashboards/la-crime-analysis/`](03-EDA-Dashboards/la-crime-analysis/) |
 | 04 | **Deep-Learning Project** | Computer vision / classical DL | PyTorch | _coming next_ | `04-Deep-Learning/` |
 

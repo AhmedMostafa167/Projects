@@ -72,6 +72,23 @@ git commit -m "Deploy portfolio refresh"
 echo "==> Pushing to origin/${DEFAULT_BRANCH}..."
 git push origin "HEAD:${DEFAULT_BRANCH}"
 
+# GitHub Pages may be configured to deploy from `main` even when the repo
+# default branch is still `master` (or vice versa, from older forks).
+# Push to whichever well-known branch is missing so Pages picks it up
+# regardless of how Settings -> Pages is configured.
+for candidate in main master; do
+    if [[ "${candidate}" != "${DEFAULT_BRANCH}" ]]; then
+        if git ls-remote --exit-code --heads origin "${candidate}" >/dev/null 2>&1; then
+            echo "==> Also syncing origin/${candidate} (in case Pages reads from there)..."
+            git push origin "HEAD:${candidate}"
+        fi
+    fi
+done
+
 echo
-echo "Done. Your site will be live in ~30s at:"
+echo "Done. Your site will be live in ~30-60s at:"
 echo "    https://ahmedmostafa167.github.io/"
+echo
+echo "If the old site still shows: hard-refresh (Ctrl/Cmd + Shift + R)"
+echo "or check Pages settings:"
+echo "    https://github.com/AhmedMostafa167/AhmedMostafa167.github.io/settings/pages"

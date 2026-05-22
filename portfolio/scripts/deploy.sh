@@ -45,6 +45,20 @@ git rm -rf --quiet . 2>/dev/null || true
 find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
 echo "==> Copying new portfolio in..."
+# Refuse to copy nested git repositories — they get registered as
+# unconfigured submodules in the .github.io repo and break GitHub Pages
+# builds with "No url found for submodule path ... in .gitmodules".
+NESTED_GITS=$(find "${PORTFOLIO_DIR}" -mindepth 2 -maxdepth 6 -name '.git' \( -type d -o -type f \) 2>/dev/null || true)
+if [[ -n "${NESTED_GITS}" ]]; then
+    echo "    ERROR: nested git repository found inside the portfolio folder:" >&2
+    echo "${NESTED_GITS}" | sed 's|^|        |' >&2
+    echo "" >&2
+    echo "    GitHub Pages would treat this as an unconfigured submodule and" >&2
+    echo "    fail the build. Delete the nested .git (or the whole folder) and" >&2
+    echo "    re-run this script." >&2
+    exit 1
+fi
+
 # Use rsync if available for a cleaner copy, fall back to cp -R
 if command -v rsync >/dev/null 2>&1; then
     rsync -a --exclude '.git' --exclude 'scripts/deploy.sh' \

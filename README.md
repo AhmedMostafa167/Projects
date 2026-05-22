@@ -24,9 +24,10 @@ A curated set of machine-learning and natural-language-processing projects, each
 2. The `docs/` folder of each project also contains `ARCHITECTURE.md` and `DEPLOYMENT.md`.
 
 **For Ahmed (interview prep)**:
-1. **[`docs/INTERVIEW_GUIDE.md`](docs/INTERVIEW_GUIDE.md)** — the single document to read before interviews. Cross-project questions, one-sentence pitches, what to do the night before.
-2. **[`docs/MODERNIZATION_LOG.md`](docs/MODERNIZATION_LOG.md)** — defensible "what changed and why" catalogue. Use this to defend specific upgrades vs. the original repos.
-3. Each project's own `docs/INTERVIEW_NOTES.md` — denser per-project cheat-sheet.
+1. **[`docs/STUDY_PLAN.md`](docs/STUDY_PLAN.md)** — start here. 4-week plan to genuinely own this work (papers, courses, daily rhythm, rebuild-from-scratch exercises).
+2. **[`docs/INTERVIEW_GUIDE.md`](docs/INTERVIEW_GUIDE.md)** — the single document to read before interviews. Cross-project questions, one-sentence pitches, what to do the night before.
+3. **[`docs/MODERNIZATION_LOG.md`](docs/MODERNIZATION_LOG.md)** — defensible "what changed and why" catalogue. Use this to defend specific upgrades vs. the original repos.
+4. Each project's own `docs/INTERVIEW_NOTES.md` — denser per-project cheat-sheet.
 
 ---
 

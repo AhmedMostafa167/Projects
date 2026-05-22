@@ -1,0 +1,97 @@
+/* =========================================
+   Keyframes + reveal-on-scroll
+   ========================================= */
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        box-shadow: 0 0 8px var(--accent-4);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--accent-4);
+        transform: scale(1.15);
+    }
+}
+
+@keyframes scroll-bob {
+    0%, 20% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(18px);
+        opacity: 0;
+    }
+}
+
+@keyframes float-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Reveal-on-scroll: starts invisible, lifts in when the
+   IntersectionObserver flips .is-visible on. */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s var(--ease-out),
+        transform 0.8s var(--ease-out);
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger child reveals inside a section once it enters view. */
+.bento .bento__card.reveal {
+    transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.skills__grid .skill-card.reveal {
+    transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.timeline__item.reveal {
+    transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.contact__card.reveal {
+    transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* Hero terminal: fade up sequence on load */
+.hero__terminal {
+    animation: float-up 0.9s var(--ease-out) both;
+}
+
+.hero__meta {
+    animation: float-up 0.9s var(--ease-out) 0.2s both;
+}
+
+.hero__scroll {
+    animation: float-up 0.9s var(--ease-out) 0.4s both;
+}

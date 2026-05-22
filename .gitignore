@@ -1,0 +1,19 @@
+# Generic ignores at repo root. Each project has its own .gitignore for project-specific paths.
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+.env
+.envrc
+
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+.ipynb_checkpoints/
+
+.DS_Store

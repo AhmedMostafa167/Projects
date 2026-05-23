@@ -19,15 +19,10 @@ A curated set of machine-learning and natural-language-processing projects, each
 
 ## Start here
 
-**For interviewers / recruiters**:
-1. Pick any project above — each has its own README with a quickstart, architecture diagram, and live-demo link.
-2. The `docs/` folder of each project also contains `ARCHITECTURE.md` and `DEPLOYMENT.md`.
+Pick any project above — each has its own README with a quickstart, architecture diagram, and a link to the live demo. Every project folder also contains:
 
-**For Ahmed (interview prep)**:
-1. **[`docs/STUDY_PLAN.md`](docs/STUDY_PLAN.md)** — start here. 4-week plan to genuinely own this work (papers, courses, daily rhythm, rebuild-from-scratch exercises).
-2. **[`docs/INTERVIEW_GUIDE.md`](docs/INTERVIEW_GUIDE.md)** — the single document to read before interviews. Cross-project questions, one-sentence pitches, what to do the night before.
-3. **[`docs/MODERNIZATION_LOG.md`](docs/MODERNIZATION_LOG.md)** — defensible "what changed and why" catalogue. Use this to defend specific upgrades vs. the original repos.
-4. Each project's own `docs/INTERVIEW_NOTES.md` — denser per-project cheat-sheet.
+- `docs/ARCHITECTURE.md` — the system design
+- `docs/DEPLOYMENT.md` — exact commands for running and deploying
 
 ---
 
@@ -65,8 +60,7 @@ NN-Category/<project-name>/
 │   └── push_to_hub.py         # (if the project produces a model)
 └── docs/
     ├── ARCHITECTURE.md
-    ├── DEPLOYMENT.md
-    └── INTERVIEW_NOTES.md
+    └── DEPLOYMENT.md
 ```
 
 ---
@@ -108,7 +102,7 @@ See each project's `docs/DEPLOYMENT.md` for full details and alternative targets
 
 ## Original / archived repos
 
-These were earlier learning repos kept on the same GitHub account; the modernized versions live in this monorepo. See [`docs/MODERNIZATION_LOG.md`](docs/MODERNIZATION_LOG.md) for the specific "what changed and why" per project.
+These were earlier learning repos kept on the same GitHub account; the modernized versions live in this monorepo.
 
 - [`langchain-research-assistant`](https://github.com/AhmedMostafa167/langchain-research-assistant) → modernized as **01-LLM-RAG/research-assistant**
 - [`PEGASUS-DialogueSum`](https://github.com/AhmedMostafa167/PEGASUS-DialogueSum) → reworked as **02-NLP-FineTuning/dialogue-summarization** (decoder-only + LoRA)

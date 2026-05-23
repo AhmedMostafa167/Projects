@@ -106,8 +106,7 @@ text-classification-modernbert/
 ├── tests/
 ├── docs/
 │   ├── ARCHITECTURE.md
-│   ├── DEPLOYMENT.md
-│   └── INTERVIEW_NOTES.md
+│   └── DEPLOYMENT.md
 ├── Dockerfile
 ├── pyproject.toml
 └── .env.example
@@ -139,4 +138,4 @@ text-classification-modernbert/
 | ModernBERT (this work) | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
 | ModernBERT + temp scaling | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
 
-See [`docs/INTERVIEW_NOTES.md`](docs/INTERVIEW_NOTES.md) for talking points.
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full system design.

@@ -81,8 +81,7 @@ la-crime-analysis/
 ├── tests/
 │   └── test_data.py      # Data-loading + filter tests
 ├── docs/
-│   ├── DEPLOYMENT.md
-│   └── INTERVIEW_NOTES.md
+│   └── DEPLOYMENT.md
 ├── scripts/
 │   └── deploy_hf_space.sh
 ├── Dockerfile
@@ -115,5 +114,3 @@ la-crime-analysis/
 - **Demographic data is reported, not predicted.** This dashboard does *not* predict anything about who commits crime — it visualizes who is reported as a *victim*. Confusing the two would be harmful.
 - **Reporting bias.** Some crime categories are under-reported (e.g., domestic violence). A spike in reports of a category may reflect a policy change in reporting, not a real change in incidence.
 - **Date `2020-01-27 reported 2023-02-27`-type rows exist.** The data has crimes that were reported years after they occurred. The dashboard filters on `DATE OCC` (occurrence date) by default; the raw data is preserved if you ever want to filter on `Date Rptd`.
-
-See [`docs/INTERVIEW_NOTES.md`](docs/INTERVIEW_NOTES.md) for discussion points.

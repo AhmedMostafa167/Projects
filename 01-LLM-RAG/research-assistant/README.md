@@ -147,8 +147,7 @@ research-assistant/
 ├── notebooks/                # Exploration notebook (dev journey)
 ├── docs/
 │   ├── ARCHITECTURE.md       # System design deep-dive
-│   ├── DEPLOYMENT.md         # All deploy targets
-│   └── INTERVIEW_NOTES.md    # What to discuss in interviews
+│   └── DEPLOYMENT.md         # All deploy targets
 ├── scripts/
 │   └── deploy_hf_space.sh    # One-command HF Spaces deploy
 ├── Dockerfile
@@ -174,11 +173,10 @@ research-assistant/
 
 ---
 
-## Interview talking points
+## Design highlights
 
-See [`docs/INTERVIEW_NOTES.md`](docs/INTERVIEW_NOTES.md) for a detailed breakdown of:
-- Why LangGraph over plain LCEL chains
-- Trade-offs in chunking and retrieval strategies
-- How the multi-provider LLM abstraction works
-- How citation tracking is implemented
-- What I'd change to scale to 1M+ documents
+- **Why LangGraph over plain LCEL chains** — the flow isn't linear; retrieval quality decides whether we generate or fetch more, which is naturally a state machine.
+- **Why hybrid retrieval + cross-encoder reranking** — dense embeddings catch semantic matches, BM25 catches exact-keyword matches, the cross-encoder gives precision at the top of the list.
+- **Why a pluggable LLM factory** — the rest of the code depends only on `BaseChatModel`, so swapping HF Inference for Groq, Anthropic, or OpenAI is one env var.
+- **How citation tracking works** — the answer prompt numbers context blocks `[1], [2], ...` and the model is instructed to cite by number; sources are returned alongside the answer.
+- **Scaling beyond ~1M docs** — move the vector store to Qdrant/Weaviate, BM25 to OpenSearch, add a retrieval cache and a queue-based ingestion path.

@@ -90,8 +90,7 @@ dialogue-summarization/
 ├── tests/
 ├── docs/
 │   ├── ARCHITECTURE.md
-│   ├── DEPLOYMENT.md
-│   └── INTERVIEW_NOTES.md
+│   └── DEPLOYMENT.md
 ├── Dockerfile
 ├── pyproject.toml
 └── .env.example
@@ -123,6 +122,4 @@ Once you run the fine-tune, the metrics get written here automatically by `src/e
 
 The expected outcome: LoRA-tuned Llama-3.2-3B should match or beat PEGASUS-large on ROUGE while needing ~4× less GPU memory at inference (4-bit) and producing more coherent, instruction-following summaries.
 
----
-
-See [`docs/INTERVIEW_NOTES.md`](docs/INTERVIEW_NOTES.md) for talking points.
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full system design.

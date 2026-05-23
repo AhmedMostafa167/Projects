@@ -1,4 +1,4 @@
-# Research Assistant — Production-Grade RAG with LangGraph
+# Research Assistant — RAG with LangGraph
 
 > An end-to-end Retrieval-Augmented Generation (RAG) system that ingests academic papers from ArXiv and the open web, builds a hybrid vector index, and answers research questions with grounded citations. Built with LangChain 0.3 + LangGraph, deployable to Hugging Face Spaces in one command.
 
@@ -9,15 +9,15 @@
 
 ---
 
-## What this project demonstrates
+## What's in this project
 
-| Skill | How it's shown here |
+| Area | What's here |
 |---|---|
-| **Modern LLM orchestration** | LangGraph state machine (not just an LCEL chain) — query planning → retrieval → grading → generation → reflection |
-| **Production RAG patterns** | Hybrid retrieval (dense + BM25), cross-encoder reranking, parent-document chunking, citation tracking |
+| **LLM orchestration** | LangGraph state machine (rather than a single LCEL chain) — query planning → retrieval → grading → generation → reflection |
+| **RAG patterns** | Hybrid retrieval (dense + BM25), cross-encoder reranking, parent-document chunking, citation tracking |
 | **Multi-provider LLM design** | Pluggable backend: Hugging Face Inference, Groq, Anthropic, OpenAI — swap with one env var |
 | **API + UI separation** | FastAPI service + Gradio frontend, both Dockerized |
-| **Deployment** | Hugging Face Spaces (Docker SDK), with a one-command deploy script |
+| **Deployment** | Hugging Face Spaces (Docker SDK) with a one-command deploy script |
 | **Evaluation** | RAGAS-based eval suite (faithfulness, context precision, answer relevancy) |
 | **Observability** | Optional LangSmith tracing, structured logging, request IDs |
 

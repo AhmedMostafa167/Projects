@@ -12,7 +12,7 @@ short_description: RAG over ArXiv + open web, LangGraph powered
 
 # Research Assistant
 
-A production-grade RAG system built with LangChain 0.3 + LangGraph.
+A RAG system built with LangChain 0.3 + LangGraph.
 
 - Ingests papers from ArXiv and the open web
 - Hybrid retrieval (dense + BM25) with cross-encoder reranking

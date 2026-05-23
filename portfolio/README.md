@@ -7,7 +7,7 @@ A modern, creative personal-site rebuild. Pure HTML/CSS/JS (no build step), depl
 A single-page portfolio with a "Neural Engineer" theme:
 - Terminal-inspired hero with rotating-title typing animation
 - Animated neural-network canvas background (respects `prefers-reduced-motion`)
-- Bento grid for the four flagship projects, with mouse-tracked glow
+- Bento grid for the four projects, with mouse-tracked glow
 - Visualized skills (categorized cards with animated bars)
 - Vertical timeline for experience and education
 - Highlighted research/publication section

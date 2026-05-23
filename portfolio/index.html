@@ -6,17 +6,17 @@
     <meta name="theme-color" content="#0a0a0f">
 
     <title>Ahmed Mostafa — NLP / ML Engineer</title>
-    <meta name="description" content="Ahmed Mostafa — NLP & ML Engineer building production-grade LLM, RAG, and fine-tuned transformer systems. Computer Science graduate, quantum-computing researcher with a published paper, deployer of four flagship ML projects.">
+    <meta name="description" content="Ahmed Mostafa — NLP & ML Engineer. Computer Science graduate, published quantum-computing researcher. Portfolio: four projects covering RAG, LoRA fine-tuning, transformer classification, and interactive dashboards.">
     <meta name="author" content="Ahmed Mostafa">
 
     <meta property="og:title" content="Ahmed Mostafa — NLP / ML Engineer">
-    <meta property="og:description" content="Production-grade NLP/ML engineer. RAG with LangGraph, QLoRA fine-tuning, transformer classifiers, interactive dashboards.">
+    <meta property="og:description" content="Portfolio of NLP/ML projects: RAG with LangGraph, QLoRA fine-tuning, transformer classification, interactive dashboards.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ahmedmostafa167.github.io/">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ahmed Mostafa — NLP / ML Engineer">
-    <meta name="twitter:description" content="Production-grade NLP/ML engineer. RAG, QLoRA, transformer classifiers.">
+    <meta name="twitter:description" content="Portfolio of NLP/ML projects: RAG, QLoRA, transformer classification, dashboards.">
 
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -123,10 +123,11 @@
                         </div>
                         <div class="terminal__line terminal__output">
                             <p class="hero__pitch">
-                                CS graduate building production-grade <em>LLM</em>, <em>RAG</em>,
-                                and <em>fine-tuned transformer</em> systems.
+                                CS graduate working on <em>LLM</em>, <em>RAG</em>,
+                                and <em>fine-tuned transformer</em> projects.
                                 Published quantum-computing researcher.
-                                Currently shipping <strong>four flagship AI projects</strong>.
+                                <strong>Four projects</strong> in this portfolio,
+                                each deployable end-to-end.
                             </p>
                         </div>
 
@@ -186,28 +187,29 @@
                 <div class="about__grid">
                     <article class="about__bio reveal">
                         <p class="about__lead">
-                            I'm <strong>Ahmed</strong>. Computer Science graduate, currently building NLP &amp; LLM systems
-                            with the same engineering discipline I'd want at a real job: typed configs, unit tests, Docker,
-                            CI, and one-command deployments. No demo-ware.
+                            I'm <strong>Ahmed</strong>, a recent Computer Science graduate. The projects on this
+                            site are my deeper studies in NLP and ML &mdash; each one structured the way I'd want
+                            code to be at work: typed configs, unit tests, Docker, and a one-command deploy.
                         </p>
                         <p>
-                            My route into AI was unusual. I started in quantum computing — interned at QUAE Research developing
-                            an EEG classification pipeline with Quantum Variational Autoencoders, which became
+                            My route into AI was a little unusual. I started in quantum computing &mdash; interned
+                            at QUAE Research developing an EEG classification pipeline with Quantum Variational
+                            Autoencoders, which became
                             <a href="https://hal.science/hal-04501908" target="_blank" rel="noopener">a published paper</a>
                             at the Neurogenomics 2024 conference. That experience taught me how to read papers,
-                            run rigorous experiments, and ship reproducible work.
+                            run rigorous experiments, and document reproducible work.
                         </p>
                         <p>
-                            Now I focus on what I find most exciting: <em>language</em>. RAG architectures,
-                            parameter-efficient fine-tuning, and the engineering glue that turns a clever model into
-                            a useful product. Everything you see on this page is deployed and documented end-to-end.
+                            Right now I'm focused on what I find most interesting: <em>language</em>. RAG
+                            architectures, parameter-efficient fine-tuning, and the engineering glue that turns
+                            a model into something usable. The projects on this page are all deployable end-to-end.
                         </p>
                     </article>
 
                     <aside class="about__stats reveal" aria-label="At a glance">
                         <div class="stat">
                             <span class="stat__value" data-counter="4">0</span>
-                            <span class="stat__label">Flagship<br>projects deployed</span>
+                            <span class="stat__label">Portfolio<br>projects</span>
                         </div>
                         <div class="stat">
                             <span class="stat__value" data-counter="1">0</span>
@@ -231,24 +233,25 @@
             <div class="container">
                 <div class="section__header reveal">
                     <span class="section__num">02</span>
-                    <h2 class="section__title" id="projects-title">Flagship Projects</h2>
+                    <h2 class="section__title" id="projects-title">Projects</h2>
                     <div class="section__line"></div>
                 </div>
                 <p class="section__intro reveal">
-                    Four end-to-end systems. Each one is its own folder in
+                    Four projects covering different parts of the modern NLP / ML stack.
+                    Each one lives in its own folder in
                     <a href="https://github.com/AhmedMostafa167/Projects" target="_blank" rel="noopener">my monorepo</a>
-                    with structured <code>src/</code>, unit tests, a Dockerfile, and a one-command deploy script to Hugging Face Spaces.
+                    with a typed <code>src/</code>, unit tests, a Dockerfile, and a deploy script for Hugging Face Spaces.
                 </p>
 
                 <div class="bento">
 
                     <article class="bento__card bento__card--featured reveal" style="--accent: 168, 85, 247;">
-                        <div class="bento__tag">FLAGSHIP · RAG</div>
+                        <div class="bento__tag">RETRIEVAL-AUGMENTED GENERATION</div>
                         <h3 class="bento__title">Research Assistant</h3>
                         <p class="bento__desc">
-                            Production-grade RAG over ArXiv + the open web. Built as a LangGraph state machine with
-                            hybrid retrieval (Chroma + BM25) and cross-encoder reranking. Multi-provider LLM backend
-                            switches with one env var.
+                            A RAG system over ArXiv and the open web, organized as a LangGraph state machine.
+                            Uses hybrid retrieval (dense&nbsp;+&nbsp;BM25) with cross-encoder reranking. The LLM
+                            backend is swappable (HuggingFace Inference, Groq, Anthropic, OpenAI) via one env var.
                         </p>
 
                         <div class="bento__architecture" aria-hidden="true">
@@ -286,12 +289,13 @@
                     </article>
 
                     <article class="bento__card reveal" style="--accent: 236, 72, 153;">
-                        <div class="bento__tag">FLAGSHIP · GENERATIVE FT</div>
+                        <div class="bento__tag">GENERATIVE FINE-TUNING</div>
                         <h3 class="bento__title">Dialogue Summarization</h3>
                         <p class="bento__desc">
-                            QLoRA fine-tune of Llama-3.2-3B-Instruct on SAMSum. 4-bit base + LoRA on q/k/v/o, trained with
-                            TRL's <code>SFTTrainer</code> with assistant-only loss masking. Modern rebuild of my earlier
-                            PEGASUS work.
+                            A QLoRA fine-tune of Llama-3.2-3B-Instruct on the SAMSum dialogue dataset. 4-bit base
+                            with LoRA adapters on q/k/v/o, trained using TRL's <code>SFTTrainer</code> with
+                            assistant-only loss masking. Revisits my earlier PEGASUS project with the current
+                            PEFT toolchain.
                         </p>
                         <div class="bento__stat">
                             <div><span class="num">~24M</span><span class="lbl">trainable<br>params</span></div>
@@ -320,11 +324,12 @@
                     </article>
 
                     <article class="bento__card reveal" style="--accent: 6, 182, 212;">
-                        <div class="bento__tag">FLAGSHIP · DISCRIMINATIVE FT</div>
+                        <div class="bento__tag">DISCRIMINATIVE FINE-TUNING</div>
                         <h3 class="bento__title">Banking Intent Classifier</h3>
                         <p class="bento__desc">
-                            Full fine-tune of ModernBERT-base on Banking77. 77 intent classes. Temperature scaling for
-                            calibration — when the demo says "92% sure", it's right about 92% of the time.
+                            A full fine-tune of ModernBERT-base on Banking77, a 77-way customer-intent
+                            classification benchmark. Includes temperature scaling so the confidence the demo
+                            reports corresponds to accuracy on the held-out test set.
                         </p>
                         <div class="bento__tech">
                             <span>ModernBERT</span>
@@ -348,11 +353,11 @@
                     </article>
 
                     <article class="bento__card reveal" style="--accent: 34, 197, 94;">
-                        <div class="bento__tag">FLAGSHIP · EDA & PRODUCT</div>
+                        <div class="bento__tag">INTERACTIVE DASHBOARDS</div>
                         <h3 class="bento__title">LA Crime Dashboard</h3>
                         <p class="bento__desc">
-                            Multi-page Streamlit + Plotly dashboard over 185k LAPD records. Turned a one-off notebook
-                            into a tool a stakeholder can actually use.
+                            A multi-page Streamlit + Plotly dashboard over 185k LAPD records. Re-shapes an earlier
+                            exploratory notebook into an interactive tool with shared filters across four views.
                         </p>
                         <div class="bento__tech">
                             <span>Streamlit</span>
@@ -620,10 +625,11 @@
 
                 <div class="contact reveal">
                     <h3 class="contact__pitch">
-                        Looking for an <span class="text-gradient">NLP / ML engineering intern</span> who ships?
+                        Open to <span class="text-gradient">NLP / ML engineering internships</span> for summer 2026.
                     </h3>
                     <p class="contact__sub">
-                        I'm actively interviewing for summer 2026 internships. Remote or hybrid. Let's talk.
+                        Remote or hybrid. Happy to discuss any of the projects above in detail &mdash;
+                        get in touch.
                     </p>
 
                     <div class="contact__grid">

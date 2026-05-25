@@ -2,7 +2,7 @@
 
 A curated set of machine-learning and natural-language-processing projects, each self-contained, Dockerized, deployable, and documented for technical discussion.
 
-> **Status**: 4/4 flagship projects complete. Each is deploy-ready to Hugging Face Spaces with a one-command script.
+> **Status**: 4/4 projects complete. Each is deploy-ready to Hugging Face Spaces with a one-command script.
 
 ---
 

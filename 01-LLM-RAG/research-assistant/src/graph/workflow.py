@@ -8,26 +8,21 @@ and conditional edges — easier to reason about, easier to add nodes,
 and built-in support for streaming intermediate state to the UI.
 
 Flow:
-    rewrite_query → retrieve → grade → [generate | rewrite_query]
-                                           ↓
-                                       reflect → END
-                                           ↓
-                                     (or back to retrieve once)
+    rewrite_query → retrieve → grade → generate → reflect → END
+                                                       ↓
+                                               (or back to retrieve once)
 """
 
-from typing import Annotated, TypedDict
+from operator import add
+from typing import Annotated, List, Optional, TypedDict
 
 from langchain_core.documents import Document
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import END, StateGraph
+from pydantic import BaseModel, Field
 
-from src.llm import (
-    ANSWER_PROMPT,
-    GRADE_PROMPT,
-    QUERY_REWRITE_PROMPT,
-    REFLECTION_PROMPT,
-    get_chat_llm,
-)
+from src.llm import get_chat_llm
+from src.llm.prompts import GENERATE_PROMPT, GRADE_PROMPT, REFLECT_PROMPT, REWRITE_QUERY_PROMPT
 from src.retrieval import HybridRetriever
 from src.utils import get_logger
 
@@ -36,75 +31,103 @@ log = get_logger(__name__)
 MAX_REFLECTION_LOOPS = 1
 
 
-def _append(left: list, right: list) -> list:
-    return left + right
+# ── Schemas ───────────────────────────────────────────────────────────────────
 
+class SearchQueries(BaseModel):
+    search_queries: List[str] = Field(
+        description="2-3 concise search queries derived from the user's question."
+    )
+
+class GradeDocument(BaseModel):
+    relevant: bool = Field(
+        description="True if the document is relevant to the question, False otherwise."
+    )
+
+class Reflection(BaseModel):
+    sufficient: bool = Field(
+        description="True if the draft answer fully addresses the question."
+    )
+    follow_up_query: Optional[str] = Field(
+        default=None,
+        description="A single focused search query to fill the gap, if insufficient.",
+    )
+
+
+# ── State ─────────────────────────────────────────────────────────────────────
 
 class ResearchState(TypedDict, total=False):
     question: str
-    search_queries: list[str]
-    documents: Annotated[list[Document], _append]
+    search_queries: List[str]
+    documents: Annotated[List[Document], add]
     answer: str
     reflection_count: int
 
 
-def _format_context(docs: list[Document]) -> str:
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
+def _format_context(docs: List[Document]) -> str:
     return "\n\n".join(
         f"[{i + 1}] {d.metadata.get('title', d.metadata.get('url', 'source'))}\n{d.page_content}"
         for i, d in enumerate(docs)
     )
 
 
+# ── Graph factory ─────────────────────────────────────────────────────────────
+
 def build_graph(retriever: HybridRetriever):
     """Compile and return a runnable LangGraph workflow."""
     llm = get_chat_llm()
 
     def rewrite_query(state: ResearchState) -> ResearchState:
-        chain = QUERY_REWRITE_PROMPT | llm | StrOutputParser()
-        raw = chain.invoke({"question": state["question"]})
-        queries = [q.strip() for q in raw.splitlines() if q.strip()]
-        log.info("rewrote_queries", queries=queries)
-        return {"search_queries": queries[:3] or [state["question"]]}
+        structured_llm = llm.with_structured_output(SearchQueries)
+        result = structured_llm.invoke([
+            SystemMessage(content=REWRITE_QUERY_PROMPT),
+            HumanMessage(content=state["question"]),
+        ])
+        log.info("rewrote_queries", queries=result.search_queries)
+        return {"search_queries": result.search_queries or [state["question"]]}
 
     def retrieve(state: ResearchState) -> ResearchState:
-        all_docs: list[Document] = []
+        all_docs: List[Document] = []
         for q in state.get("search_queries", [state["question"]]):
             all_docs.extend(retriever.retrieve(q))
         return {"documents": all_docs}
 
     def grade(state: ResearchState) -> ResearchState:
-        chain = GRADE_PROMPT | llm | StrOutputParser()
-        kept: list[Document] = []
+        grader = llm.with_structured_output(GradeDocument)
+        kept: List[Document] = []
         for doc in state["documents"]:
-            verdict = chain.invoke(
-                {"question": state["question"], "document": doc.page_content}
-            ).strip().lower()
-            if verdict.startswith("yes"):
+            result = grader.invoke([
+                SystemMessage(content=GRADE_PROMPT),
+                HumanMessage(content=f"Question: {state['question']}\n\nDocument:\n{doc.page_content}"),
+            ])
+            if result.relevant:
                 kept.append(doc)
         log.info("graded", kept=len(kept), total=len(state["documents"]))
-        # Replace, not append — we filtered.
         return {"documents": kept if kept else state["documents"][:3]}
 
     def generate(state: ResearchState) -> ResearchState:
-        chain = ANSWER_PROMPT | llm | StrOutputParser()
-        answer = chain.invoke(
-            {
-                "question": state["question"],
-                "context": _format_context(state["documents"]),
-            }
-        )
-        return {"answer": answer}
+        answer = llm.invoke([
+            SystemMessage(content=GENERATE_PROMPT.format(context=_format_context(state["documents"]))),
+            HumanMessage(content=state["question"]),
+        ])
+        return {"answer": answer.content}
 
     def reflect(state: ResearchState) -> ResearchState:
-        chain = REFLECTION_PROMPT | llm | StrOutputParser()
-        verdict = chain.invoke(
-            {"question": state["question"], "draft": state["answer"]}
-        ).strip()
+        reflector = llm.with_structured_output(Reflection)
+        result = reflector.invoke([
+            SystemMessage(content=REFLECT_PROMPT),
+            HumanMessage(content=(
+                f"Question: {state['question']}\n\n"
+                f"Draft answer:\n{state['answer']}"
+            )),
+        ])
         count = state.get("reflection_count", 0) + 1
-        if verdict.lower().startswith("ok") or count >= MAX_REFLECTION_LOOPS:
+
+        if result.sufficient or not result.follow_up_query or count >= MAX_REFLECTION_LOOPS:
             return {"reflection_count": count}
-        # Use the follow-up query for one more retrieval round.
-        return {"reflection_count": count, "search_queries": [verdict]}
+
+        return {"reflection_count": count, "search_queries": [result.follow_up_query]}
 
     def should_continue(state: ResearchState) -> str:
         if state.get("reflection_count", 0) >= MAX_REFLECTION_LOOPS:

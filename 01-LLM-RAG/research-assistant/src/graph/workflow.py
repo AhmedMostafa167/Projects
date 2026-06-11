@@ -21,8 +21,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import END, StateGraph
 from pydantic import BaseModel, Field
 
-from src.llm import get_chat_llm
-from src.llm.prompts import GENERATE_PROMPT, GRADE_PROMPT, REFLECT_PROMPT, REWRITE_QUERY_PROMPT
+from src.llm import get_chat_llm, GENERATE_PROMPT, GRADE_PROMPT, REFLECT_PROMPT, REWRITE_QUERY_PROMPT
 from src.retrieval import HybridRetriever
 from src.utils import get_logger
 

@@ -1,15 +1,3 @@
----
-title: Research Assistant
-emoji: 📚
-colorFrom: indigo
-colorTo: blue
-sdk: docker
-app_port: 7860
-pinned: false
-license: mit
-short_description: RAG over ArXiv + open web, LangGraph powered
----
-
 # Research Assistant
 
 A production-grade Retrieval-Augmented Generation (RAG) system that answers research questions grounded in evidence from ArXiv papers and the open web.

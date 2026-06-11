@@ -22,7 +22,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    llm_provider: ProviderName = "huggingface"
+    llm_provider: ProviderName = "groq"
 
     huggingfacehub_api_token: str | None = None
     groq_api_key: str | None = None
@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     openai_api_key: str | None = None
 
     hf_model_id: str = "meta-llama/Llama-3.2-3B-Instruct"
-    groq_model: str = "llama-3.1-70b-versatile"
+    groq_model: str = "llama-3.3-70b-versatile"
     anthropic_model: str = "claude-haiku-4-5-20251001"
     openai_model: str = "gpt-4o-mini"
 

@@ -3,7 +3,6 @@
 A production-grade Retrieval-Augmented Generation (RAG) system that answers research questions grounded in evidence from ArXiv papers and the open web.
 
 [![Demo on Hugging Face Spaces](https://img.shields.io/badge/🤗%20Hugging%20Face-Live%20Demo-blue)](https://huggingface.co/spaces/Ahmed167/research_assistant)
-[![Source on GitHub](https://img.shields.io/badge/GitHub-Source-black?logo=github)](https://github.com/AhmedMostafa167/Projects/tree/main/01-LLM-RAG/research-assistant)
 
 ---
 

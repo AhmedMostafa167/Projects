@@ -109,6 +109,7 @@ research-assistant/
 │   ├── retrieval/         # Chroma vector store, BM25, hybrid retriever, reranker
 │   ├── llm/               # Provider factory + prompt templates
 │   ├── graph/             # LangGraph workflow
+│   ├── utils/             #  configuration and environment loading, logging
 │   └── pipeline.py        # High-level ingest() / ask() API
 ├── api.py                 # FastAPI service
 ├── app.py                 # Gradio UI

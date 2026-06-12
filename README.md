@@ -2,8 +2,7 @@
 
 A curated set of machine-learning and natural-language-processing projects, each self-contained, Dockerized, deployable, and documented for technical discussion.
 
-> **Status**: 4/4 projects complete. Each is deploy-ready to Hugging Face Spaces with a one-command script.
-
+> **Status**: 4/4 projects complete. Each is deploy-ready to Hugging Face Spaces.
 ---
 
 ## Project index
@@ -14,15 +13,6 @@ A curated set of machine-learning and natural-language-processing projects, each
 | 02 | **Dialogue Summarization** | NLP, generative fine-tuning, PEFT | Llama-3.2-3B, QLoRA, TRL, HF Hub, Gradio | Train + deploy ready | [`02-NLP-FineTuning/dialogue-summarization/`](02-NLP-FineTuning/dialogue-summarization/) |
 | 03 | **LA Crime Dashboard** | EDA, product thinking, interactive viz | Streamlit 1.40, Plotly, pandas | Deploy-ready | [`03-EDA-Dashboards/la-crime-analysis/`](03-EDA-Dashboards/la-crime-analysis/) |
 | 04 | **Banking Intent Classifier** | NLP, discriminative fine-tuning, calibration | ModernBERT, PyTorch, scikit-learn | Train + deploy ready | [`04-Deep-Learning/text-classification-modernbert/`](04-Deep-Learning/text-classification-modernbert/) |
-
----
-
-## Start here
-
-Pick any project above — each has its own README with a quickstart, architecture diagram, and a link to the live demo. Every project folder also contains:
-
-- `docs/ARCHITECTURE.md` — the system design
-- `docs/DEPLOYMENT.md` — exact commands for running and deploying
 
 ---
 

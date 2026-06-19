@@ -1,6 +1,6 @@
 """FastAPI service. Provides programmatic access to the pipeline.
 
-Run: `uvicorn api:app --reload`
+Run: `uvicorn api.main:app --reload`
 Swagger UI: http://localhost:8000/docs
 """
 
@@ -9,8 +9,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from src.pipeline import ResearchPipeline
 
+from src.config import settings
 from src.utils import get_logger
-from routers import health, ingest, ask
+from api.routers import health, ingest, ask
 
 log = get_logger(__name__)
 

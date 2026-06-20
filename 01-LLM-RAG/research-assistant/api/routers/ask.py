@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from api.dependencies import get_pipeline
+from src.pipeline import ResearchPipeline
 from api.schemas import AskRequest, AskResponse
 
 ask_router = APIRouter()

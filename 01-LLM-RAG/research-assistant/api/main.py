@@ -6,13 +6,12 @@ Swagger UI: http://localhost:8000/docs
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from src.pipeline import ResearchPipeline
 
 from src.config import settings
 from src.utils import get_logger
 from api.routers import health, ingest, ask
-
 log = get_logger(__name__)
 
 @asynccontextmanager

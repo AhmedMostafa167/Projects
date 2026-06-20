@@ -8,6 +8,10 @@ services:
       - ./data:/app/data
       - hf_cache:/app/.hf_cache
     restart: unless-stopped
+    environment:
+      - API_BASE_URL=http://api:8000   # container-to-container, not localhost
+    depends_on:
+      - api  
 
   api:
     build: .
@@ -19,6 +23,7 @@ services:
       - ./data:/app/data
       - hf_cache:/app/.hf_cache
     restart: unless-stopped
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
 
 volumes:
   hf_cache:

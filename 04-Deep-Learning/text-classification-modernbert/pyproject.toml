@@ -13,6 +13,7 @@ authors = [{ name = "Ahmed Mostafa" }]
 dependencies = [
     "transformers>=4.48.0",
     "datasets>=3.1.0",
+    "torch>=2.4.0",
     "huggingface_hub>=0.26.0",
     "gradio>=5.5.0",
     "pydantic>=2.9.0",
@@ -23,7 +24,6 @@ dependencies = [
 
 [project.optional-dependencies]
 train = [
-    "torch>=2.4.0",
     "accelerate>=1.1.0",
     "scikit-learn>=1.5.0",
     "evaluate>=0.4.3",

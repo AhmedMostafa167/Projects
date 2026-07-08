@@ -7,7 +7,7 @@ sdk: docker
 app_port: 7860
 pinned: false
 license: mit
-short_description: ModernBERT fine-tuned for 77-class banking intent classification
+short_description: ModernBERT for 77-class banking intent classification
 ---
 
 # Banking Intent Classifier

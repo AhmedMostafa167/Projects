@@ -23,14 +23,14 @@ PROJECT_DIR="$(dirname "${SCRIPT_DIR}")"
 cd "${PROJECT_DIR}"
 
 echo "==> Creating Space ${REPO_ID}..."
-huggingface-cli repo create "${SPACE_NAME}" --type space --space_sdk docker -y || true
+hf repo create "${SPACE_NAME}" --repo-type space --space-sdk docker --exist-ok || true
 
 echo "==> Swapping in Space-formatted README..."
 cp README.md README.github.md
 cp .huggingface/SPACE_README.md README.md
 
 echo "==> Uploading..."
-huggingface-cli upload "${REPO_ID}" . . --repo-type space --commit-message "Deploy"
+hf upload "${REPO_ID}" . . --repo-type space --commit-message "Deploy"
 
 mv README.github.md README.md
 
@@ -42,7 +42,7 @@ if [[ -f .env ]]; then
         value="${value#\'}"; value="${value%\'}"
         if [[ -n "${value}" ]]; then
             echo "    - ${key}"
-            huggingface-cli space secrets put "${REPO_ID}" "${key}" "${value}" || true
+            hf space secrets put "${REPO_ID}" "${key}" "${value}" || true
         fi
     done < .env
 fi

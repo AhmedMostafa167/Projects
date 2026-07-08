@@ -91,6 +91,7 @@ def main() -> None:
         repo_id=args.repo_id,
         folder_path=str(args.model_dir),
         commit_message="Initial model upload",
+        ignore_patterns=["checkpoint-*", "*.pt", "*.pth", "trainer_state.json", "rng_state*"],
     )
     print(f"Done. https://huggingface.co/{args.repo_id}")
 

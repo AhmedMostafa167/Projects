@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from sklearn.metrics import confusion_matrix
 
 
 def top_k_accuracy(logits, labels, k: int) -> float:
@@ -31,6 +32,7 @@ def main() -> None:
     import torch
     from sklearn.metrics import accuracy_score, classification_report, f1_score
     from transformers import DataCollatorWithPadding
+    from sklearn.metrics import confusion_matrix
 
     from src.calibration import apply_temperature, expected_calibration_error, fit_temperature
     from src.data import label_names, load_banking77_splits, tokenize_dataset
@@ -50,20 +52,21 @@ def main() -> None:
     collator = DataCollatorWithPadding(tokenizer)
 
     def gather_logits(ds) -> tuple:
-        all_logits = []
-        all_labels = []
-        ds_iter = ds.with_format("torch")
-        for i in range(0, len(ds_iter), args.batch_size):
-            batch = [ds_iter[j] for j in range(i, min(i + args.batch_size, len(ds_iter)))]
-            inputs = collator(batch)
-            labels = inputs.pop("labels").numpy()
-            inputs = {k: v.to(device) for k, v in inputs.items()}
-            with torch.inference_mode():
-                out = model(**inputs)
-            all_logits.append(out.logits.float().cpu().numpy())
-            all_labels.append(labels)
-        return np.concatenate(all_logits), np.concatenate(all_labels)
-
+      all_logits = []
+      all_labels = []
+      for i in range(0, len(ds), args.batch_size):
+          batch = ds[i : i + args.batch_size]          # dict of lists, no formatting needed
+          keys = list(batch.keys())
+          examples = [dict(zip(keys, vals)) for vals in zip(*batch.values())]
+          inputs = collator(examples)
+          labels = inputs.pop("labels").numpy()
+          inputs = {k: v.to(device) for k, v in inputs.items()}
+          with torch.inference_mode():
+              out = model(**inputs)
+          all_logits.append(out.logits.float().cpu().numpy())
+          all_labels.append(labels)
+      return np.concatenate(all_logits), np.concatenate(all_labels)
+      
     print("Scoring validation set (for temperature fitting)...")
     val_logits, val_labels = gather_logits(val_tok)
     temperature = fit_temperature(val_logits, val_labels)
@@ -75,6 +78,7 @@ def main() -> None:
 
     raw_probs = apply_temperature(test_logits, temperature=1.0)
     cal_probs = apply_temperature(test_logits, temperature=temperature)
+    cm = confusion_matrix(test_labels, preds, labels=list(range(len(names))))
 
     metrics = {
         "accuracy": accuracy_score(test_labels, preds),
@@ -85,6 +89,7 @@ def main() -> None:
         "ece_calibrated": expected_calibration_error(cal_probs, test_labels),
         "temperature": temperature,
         "n_test": len(test_labels),
+        "confusion_matrix": cm.tolist()
     }
 
     print(json.dumps(metrics, indent=2))
@@ -95,8 +100,9 @@ def main() -> None:
             {
                 "metrics": metrics,
                 "per_class_report": classification_report(
-                    test_labels, preds, target_names=names, output_dict=True, zero_division=0
-                ),
+    test_labels, preds, labels=list(range(len(names))),
+    target_names=names, output_dict=True, zero_division=0,
+),
             },
             f,
             indent=2,

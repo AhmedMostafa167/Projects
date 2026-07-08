@@ -17,11 +17,12 @@ if TYPE_CHECKING:
     from transformers import PreTrainedTokenizerBase
 
 DATASET_ID = "PolyAI/banking77"
+DATASET_REVISION = "refs/pr/6"  # Parquet conversion; not yet merged to main
 
 
 def load_banking77_splits(val_size: float = 0.1, seed: int = 42) -> DatasetDict:
     """Returns train / validation / test splits with `text` and `label` columns."""
-    raw = load_dataset(DATASET_ID)
+    raw = load_dataset(DATASET_ID, revision=DATASET_REVISION)
     # Stratify so each of the 77 classes is represented in the val split.
     split = raw["train"].train_test_split(
         test_size=val_size,
@@ -36,7 +37,7 @@ def load_banking77_splits(val_size: float = 0.1, seed: int = 42) -> DatasetDict:
 
 
 def label_names() -> list[str]:
-    raw = load_dataset(DATASET_ID, split="train")
+    raw = load_dataset(DATASET_ID, revision=DATASET_REVISION, split="train")
     return raw.features["label"].names
 
 

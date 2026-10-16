@@ -111,7 +111,7 @@
         try {
             words = JSON.parse(typingEl.dataset.words);
         } catch (e) {
-            words = ['NLP Engineer'];
+            words = ['AI Engineer'];
         }
 
         let wordIdx = 0;
@@ -149,7 +149,7 @@
             tick();
         }, 2200);
     } else if (typingEl) {
-        const words = JSON.parse(typingEl.dataset.words || '["NLP Engineer"]');
+        const words = JSON.parse(typingEl.dataset.words || '["AI Engineer"]');
         typingEl.textContent = words[0];
     }
 

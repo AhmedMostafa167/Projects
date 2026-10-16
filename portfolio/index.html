@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0f">
 
-    <title>Ahmed Mostafa — AI Engineer</title>
-    <meta name="description" content="Ahmed Mostafa — AI Engineer building LLM applications and agents: RAG and hybrid retrieval, tool calling and memory, evaluation, guardrails and observability, shipped as tested FastAPI services. Computer Science graduate, teaching assistant and published researcher.">
+    <title>Ahmed Mostafa — AI Engineer · LLM Systems</title>
+    <meta name="description" content="Ahmed Mostafa — AI Engineer who builds production LLM systems (RAG, agents with memory, fine-tuned models) and proves they work with evaluation suites, tracing, guardrails and before-and-after metrics on every change.">
     <meta name="author" content="Ahmed Mostafa">
 
     <meta property="og:title" content="Ahmed Mostafa — AI Engineer">
-    <meta property="og:description" content="AI engineer who ships and measures LLM systems: LangGraph agents with memory, hybrid RAG, evaluation, guardrails and LLMOps.">
+    <meta property="og:description" content="AI engineer who builds LLM systems and measures every change: right product ranked first 23% → 43%, agent tasks passed 7 → 12 of 12, vector search 35 → 3 ms.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ahmedmostafa167.github.io/">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ahmed Mostafa — AI Engineer">
-    <meta name="twitter:description" content="AI engineer: LLM agents, RAG, evaluation and LLMOps.">
+    <meta name="twitter:description" content="AI engineer: builds LLM systems, evaluates them, and improves them with measured changes.">
 
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -109,7 +109,7 @@
                         </div>
                         <div class="terminal__line terminal__output">
                             <p class="hero__role">
-                                <span class="text-gradient" data-typing data-words='["AI Engineer","LLM Application Engineer","Agentic Systems Builder","Applied AI Researcher"]'></span>
+                                <span class="text-gradient" data-typing data-words='["AI Engineer","LLM Systems Engineer","Agentic AI Engineer","Applied AI Researcher"]'></span>
                                 <span class="cursor">_</span>
                             </p>
                         </div>
@@ -123,11 +123,26 @@
                         </div>
                         <div class="terminal__line terminal__output">
                             <p class="hero__pitch">
-                                AI engineer building <em>LLM applications</em> —
-                                <em>RAG</em> and <em>memory agents</em>, evaluation and guardrails — and the backend engineering that ships and measures them.
-                                CS graduate, published researcher and teaching assistant, with a
-                                <strong>multidisciplinary</strong> foundation across deep learning, generative AI, and quantum computing.
+                                I build production <em>LLM systems</em> — RAG, agents with memory, fine-tuned models
+                                and the APIs around them — and I <strong>measure every change</strong>: evaluation suites,
+                                tracing, guardrails and before-and-after metrics.
+                                CS graduate, published researcher and teaching assistant.
                             </p>
+                        </div>
+
+                        <div class="terminal__line">
+                            <span class="terminal__prompt">ahmed@ai</span>
+                            <span class="terminal__sep">:</span>
+                            <span class="terminal__path">~</span>
+                            <span class="terminal__dollar">$</span>
+                            <span class="terminal__cmd">cat results.log</span>
+                        </div>
+                        <div class="terminal__line terminal__output">
+                            <ul class="hero__results" aria-label="Measured results from the Shopping Assistant">
+                                <li><span class="hero__results-num">23% → 43%</span> right product ranked first, after adding reranking</li>
+                                <li><span class="hero__results-num">7 → 12 of 12</span> agent tasks passed, with 29% fewer paid searches</li>
+                                <li><span class="hero__results-num">35 → 3 ms</span> median vector search over 12,730 products</li>
+                            </ul>
                         </div>
 
                         <div class="terminal__line">
@@ -186,9 +201,9 @@
                 <div class="about__grid">
                     <article class="about__bio reveal">
                         <p class="about__lead">
-                            I'm <strong>Ahmed</strong>, an AI engineer. I build applications on top of large language models —
-                            agents, retrieval, memory — with the engineering discipline I'd want at a real job: typed configs,
-                            unit tests, Docker, CI, tracing and monitoring. No demo-ware.
+                            I'm <strong>Ahmed</strong>, an AI engineer. I build LLM systems end to end — retrieval, agents,
+                            fine-tuned models and the services around them — and I treat every change as an experiment:
+                            define the metric, measure the baseline, change one thing, measure again. No demo-ware.
                         </p>
                         <p>
                             My route into AI was unusual. I started in quantum computing — interned at QUAE Research developing
@@ -198,10 +213,11 @@
                             run rigorous experiments, and ship reproducible work.
                         </p>
                         <p>
-                            Now I focus on turning models into products people can rely on: agents that call tools and
-                            remember users, retrieval that finds the right thing, and the evaluation, guardrails and observability
-                            that prove a change made it better. My latest project records every change with before-and-after
-                            measurements, and I fine-tune models when an off-the-shelf one isn't enough.
+                            Now I focus on what makes an LLM system dependable in production: evaluation that catches
+                            regressions, tracing that shows why an answer went wrong, guardrails tested against hostile input,
+                            and the latency and cost of every call. In my latest project a prompt change is only promoted
+                            after it beats the current version on the same tests, and every result is written down in an
+                            improvement log.
                         </p>
                         <p>
                             I like working across disciplines — from generative vision and quantum computing to language
@@ -242,7 +258,7 @@
                     <div class="section__line"></div>
                 </div>
                 <p class="section__intro reveal">
-                    Four end-to-end systems, each with structured <code>src/</code>, unit tests, Docker and CI.
+                    Four end-to-end AI systems, each with tests, Docker and CI, and each judged by numbers rather than demos.
                     The Shopping Assistant has its own repository; the other three live in
                     <a href="https://github.com/AhmedMostafa167/Projects" target="_blank" rel="noopener">my monorepo</a>
                     with one-command deploys to Hugging Face Spaces.
@@ -466,41 +482,42 @@
                     <div class="skill-card reveal" data-category="llm">
                         <div class="skill-card__head">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                            <h3>LLM Apps &amp; Agents</h3>
+                            <h3>LLM Systems &amp; Agents</h3>
                         </div>
                         <ul class="skill-card__list">
                             <li><span>LangChain / LangGraph</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
-                            <li><span>Agents &amp; tool calling</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
-                            <li><span>RAG (hybrid + rerank)</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
-                            <li><span>Agent memory</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 75%"></span></span></li>
-                            <li><span>Prompt engineering</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
+                            <li><span>RAG: hybrid search + rerank</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
+                            <li><span>Agents, tool calling &amp; memory</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
+                            <li><span>Prompt design &amp; versioning</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
+                            <li><span>Multi-provider LLM APIs</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
                         </ul>
                     </div>
 
                     <div class="skill-card reveal" data-category="eval">
                         <div class="skill-card__head">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-                            <h3>Evaluation &amp; LLMOps</h3>
+                            <h3>Evaluation &amp; Observability</h3>
                         </div>
                         <ul class="skill-card__list">
-                            <li><span>LLM evaluation (RAGAS)</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
-                            <li><span>Langfuse tracing</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 75%"></span></span></li>
-                            <li><span>Guardrails</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
-                            <li><span>MLflow experiments</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
+                            <li><span>LLM &amp; agent evaluation</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
+                            <li><span>Retrieval metrics (hit rate @k)</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
+                            <li><span>Tracing &amp; prompt management (Langfuse)</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 75%"></span></span></li>
+                            <li><span>Guardrails &amp; adversarial testing</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
+                            <li><span>Experiment tracking (MLflow)</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
                         </ul>
                     </div>
 
                     <div class="skill-card reveal" data-category="eng">
                         <div class="skill-card__head">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                            <h3>Backend &amp; Deployment</h3>
+                            <h3>Production Engineering</h3>
                         </div>
                         <ul class="skill-card__list">
                             <li><span>FastAPI / Uvicorn</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 85%"></span></span></li>
                             <li><span>Docker / Compose</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
-                            <li><span>Git / GitHub Actions</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
-                            <li><span>Prometheus / Grafana</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 60%"></span></span></li>
-                            <li><span>HF Spaces / Gradio</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
+                            <li><span>CI with GitHub Actions</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 80%"></span></span></li>
+                            <li><span>Monitoring (Prometheus / Grafana)</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 60%"></span></span></li>
+                            <li><span>Latency &amp; cost optimisation</span><span class="skill-bar"><span class="skill-bar__fill" style="--w: 70%"></span></span></li>
                         </ul>
                     </div>
 
@@ -693,10 +710,10 @@
 
                 <div class="contact reveal">
                     <h3 class="contact__pitch">
-                        Looking for an <span class="text-gradient">AI engineer</span> who ships?
+                        Looking for an <span class="text-gradient">AI engineer</span> who measures what they ship?
                     </h3>
                     <p class="contact__sub">
-                        I'm open to internships and entry-level roles — onsite or remote. Let's talk.
+                        I'm open to AI engineering internships and entry-level roles — onsite or remote. Let's talk.
                     </p>
 
                     <div class="contact__grid">

@@ -1509,3 +1509,21 @@ footer {
 .footer a:hover {
     color: var(--accent-2);
 }
+
+.bento__media {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color var(--t-base) var(--ease-out);
+}
+
+.bento__media:hover {
+    border-color: rgba(var(--accent), 0.4);
+}
+
+.bento__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

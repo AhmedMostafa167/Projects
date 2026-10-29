@@ -1,4 +1,4 @@
-# Portfolio — Ahmed Mostafa
+# Portfolio — Ahmed Dorra
 
 A modern, creative personal-site rebuild. Pure HTML/CSS/JS (no build step), deployable directly to GitHub Pages.
 
